@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Select the installed Violet Afterdark VS Code theme with backup and restore."""
+"""Select an installed Violet VS Code theme with backup and restore."""
 import argparse
 import difflib
 import json
@@ -24,6 +24,7 @@ def main():
     parser.add_argument('action', choices=['preview', 'apply', 'restore'])
     parser.add_argument('--settings', type=Path, help='Alternate user/profile settings.json')
     parser.add_argument('--terminal-font', help='Optionally set the integrated terminal font')
+    parser.add_argument('--theme', choices=['Violet Afterdark', 'Violet AfterLight'], default='Violet Afterdark')
     parser.add_argument('--backup', type=Path, help='Specific restore manifest; defaults to latest VS Code backup')
     args = parser.parse_args()
     state = Path.home() / '.local/state/wsl-rice/vscode'
@@ -34,12 +35,12 @@ def main():
         path = (args.settings or settings_path()).absolute()
         raw = path.read_text(encoding='utf-8-sig') if path.exists() else '{}\n'
         settings = jsonc_loads(raw)
-        settings['workbench.colorTheme'] = 'Violet Afterdark'
+        settings['workbench.colorTheme'] = args.theme
         if args.terminal_font:
             settings['terminal.integrated.fontFamily'] = args.terminal_font
         updated = json.dumps(settings, indent=4, ensure_ascii=False)+'\n'
         if args.action == 'preview':
-            print(''.join(difflib.unified_diff(raw.splitlines(True), updated.splitlines(True), fromfile=str(path), tofile=str(path)+' (Violet Afterdark)')), end='')
+            print(''.join(difflib.unified_diff(raw.splitlines(True), updated.splitlines(True), fromfile=str(path), tofile=str(path)+' ('+args.theme+')')), end='')
         else:
             apply([(path, updated.encode())], state)
             print('Theme selected. If needed, run Developer: Reload Window in VS Code.')

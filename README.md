@@ -93,9 +93,12 @@ toolchain integration are preserved. No toolchain is installed by this repo.
 ## VS Code extension
 
 The theme-only extension source lives in `vscode/violet-afterdark/`. The ready-to-install
-package is [dist/violet-afterdark-0.1.0.vsix](dist/violet-afterdark-0.1.0.vsix).
+package is [dist/violet-afterdark-0.2.0.vsix](dist/violet-afterdark-0.2.0.vsix).
 In Windows VS Code, run **Extensions: Install from VSIX…** in the Command Palette,
-select the package, then choose **Violet Afterdark** using **Preferences: Color Theme**.
+select the package, then choose **Violet Afterdark** or **Violet AfterLight** using
+**Preferences: Color Theme** (**Ctrl-K**, release, then **Ctrl-T**).
+AfterLight uses pale lavender surfaces, deep purple accents, dark plum text,
+and a light terminal. Both themes are included in the same extension.
 For a WSL workspace, install the theme on the Windows side (its extension kind is UI).
 It changes colors only; your extensions, fonts, shortcuts, and terminal profile remain your choice.
 
@@ -104,6 +107,8 @@ To select the installed theme from WSL with a backup of your VS Code settings:
 ```bash
 python3 scripts/vscode.py preview --terminal-font '0xProto Nerd Font Mono'
 python3 scripts/vscode.py apply --terminal-font '0xProto Nerd Font Mono'
+# Or select the light theme:
+python3 scripts/vscode.py apply --theme 'Violet AfterLight'
 ```
 
 The optional font argument matches the WSL terminal font. Omit it to keep the
@@ -126,6 +131,9 @@ npm run package
 
 The pinned packager is a development dependency; the VSIX contains only theme
 data and documentation. It is stored in the private repo, not published to the Marketplace.
+The extension stays in this repo because it shares the terminal theme's palette
+and maintenance. Its own package manifest and lockfile keep it independently
+buildable if it moves to a dedicated repository later.
 Official references: [color themes](https://code.visualstudio.com/api/extension-guides/color-theme)
 and [VSIX packaging](https://code.visualstudio.com/api/working-with-extensions/publishing-extension).
 

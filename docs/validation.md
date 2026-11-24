@@ -62,3 +62,23 @@ fresh Ubuntu tab on Windows to judge; the SVG is not evidence of a captured desk
 - Bash syntax validation and the `t` shortcut's already-inside-tmux guard passed.
 - VS Code desktop rendering has not been visually inspected; the theme was
   validated through the official packager, installation, and configuration checks.
+
+## Violet AfterLight 0.2.0
+
+- Version 0.2.0 contributes both `Violet Afterdark` (`vs-dark`) and
+  `Violet AfterLight` (`vs`) under the original extension ID. The packaged
+  Afterdark theme file is byte-identical to the previous committed version.
+- AfterLight covers the same 170 workbench colors, 26 syntax rules, and 21
+  semantic rules, with light surfaces and a light integrated terminal.
+- All defined syntax foreground colors passed a 4.5:1 contrast check against
+  the normal editor background. Nine primary interface text/background pairs
+  also passed, including buttons, selections, inactive tabs, and suggestion lists.
+  This is a targeted contrast check, not a full accessibility certification.
+- The official packager produced an eight-file VSIX containing both themes and
+  no executable extension code or runtime dependencies.
+- The optional theme-selection script passed a temporary-file check for selecting
+  AfterLight, a no-change second preview, preserving unrelated settings, and
+  restoring the original JSONC bytes.
+- Windows VS Code successfully installed version 0.2.0. Both installed theme
+  files match repository source; the user's settings and active theme selection
+  were preserved byte-for-byte during the upgrade.
