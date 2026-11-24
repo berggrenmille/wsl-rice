@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="680" viewBox="0 0 1040 680" role="img" aria-labelledby="title desc">
+  <title id="title">Violet Afterdark</title>
+  <desc id="desc">Illustrative terminal preview with a dark purple palette, diamond greeting, two-line prompt, and themed fuzzy search.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#211332"/><stop offset="1" stop-color="#0D0914"/></linearGradient>
+    <linearGradient id="neon"><stop stop-color="#B56CFF"/><stop offset=".65" stop-color="#E06CDB"/><stop offset="1" stop-color="#62D6E8"/></linearGradient>
+  </defs>
+  <rect width="1040" height="680" rx="20" fill="url(#bg)"/>
+  <text x="48" y="49" fill="#9080A5" font-family="monospace" font-size="11" letter-spacing="3">WSL / BASH / WINDOWS TERMINAL</text>
+  <text x="48" y="91" fill="#F2EBFA" font-family="sans-serif" font-size="32" font-weight="600" letter-spacing="-1">Violet Afterdark</text>
+  <text x="992" y="88" fill="#B56CFF" text-anchor="end" font-family="monospace" font-size="12">QUIET SYSTEM. NEON SIGNAL.</text>
+  <rect x="48" y="118" width="944" height="510" rx="12" fill="#0D0914" stroke="#43265D"/>
+  <path d="M60 118H980" stroke="url(#neon)" stroke-width="2"/>
+  <path d="M49 160H991" stroke="#211332"/>
+  <circle cx="70" cy="140" r="4" fill="#67418C"/>
+  <circle cx="86" cy="140" r="4" fill="#B56CFF"/>
+  <circle cx="102" cy="140" r="4" fill="#E06CDB"/>
+  <text x="131" y="145" fill="#DDD5E8" font-family="monospace" font-size="12">Ubuntu</text>
+  <g font-family="'0xProto Nerd Font Mono', 'JetBrains Mono', monospace" font-size="14">
+    <path d="M124 193L160 241L124 289L88 241Z M124 214L144 241L124 268L104 241Z" stroke="url(#neon)" stroke-width="2" fill="none"/>
+    <text x="198" y="201" fill="#B56CFF" font-weight="bold" letter-spacing="3">VIOLET AFTERDARK</text>
+    <path d="M198 214H544" stroke="#67418C"/>
+    <text x="198" y="237" fill="#B56CFF">system</text><text x="290" y="237" fill="#DDD5E8">Ubuntu / WSL2</text>
+    <text x="198" y="260" fill="#B56CFF">shell</text><text x="290" y="260" fill="#DDD5E8">Bash</text>
+    <text x="198" y="283" fill="#B56CFF">session</text><text x="290" y="283" fill="#DDD5E8">ready</text>
+    <text x="76" y="332" fill="#67418C">╭─</text>
+    <text x="103" y="332" fill="#B56CFF" font-weight="bold">~/projects/gateway</text>
+    <text x="275" y="332" fill="#E06CDB">main</text>
+    <text x="326" y="332" fill="#9080A5">~2 · cmake 3.28 · C++</text>
+    <text x="76" y="357" fill="#67418C">╰─</text><text x="103" y="357" fill="#B56CFF">❯</text><text x="123" y="357" fill="#DDD5E8">ll</text>
+    <text x="76" y="393" fill="#9080A5">drwxr-xr-x</text><text x="232" y="393" fill="#B56CFF">src/</text>
+    <text x="76" y="416" fill="#9080A5">drwxr-xr-x</text><text x="232" y="416" fill="#B56CFF">include/</text>
+    <text x="76" y="439" fill="#9080A5">.rw-r--r--</text><text x="232" y="439" fill="#DDD5E8">CMakeLists.txt</text>
+    <rect x="574" y="199" width="389" height="342" rx="8" fill="#100B19" stroke="#67418C"/>
+    <text x="596" y="229" fill="#9080A5" font-size="11" letter-spacing="2">PROJECT SEARCH</text>
+    <text x="596" y="261" fill="#B56CFF">❯</text><text x="618" y="261" fill="#DDD5E8">gate</text>
+    <text x="596" y="285" fill="#9080A5" font-size="11">3 / 24</text>
+    <rect x="585" y="300" width="367" height="30" rx="3" fill="#211332"/>
+    <text x="596" y="321" fill="#62D6E8">▶</text><text x="618" y="321" fill="#E06CDB">gateway</text><text x="680" y="321" fill="#F2EBFA">/src/main.cpp</text>
+    <text x="618" y="354" fill="#DDD5E8">gateway/include/server.hpp</text>
+    <text x="618" y="387" fill="#DDD5E8">gateway/CMakeLists.txt</text>
+    <path d="M592 447H946" stroke="#211332"/>
+    <text x="596" y="474" fill="#9080A5" font-size="11">CTRL-R history · CTRL-T files</text>
+    <text x="596" y="498" fill="#9080A5" font-size="11">ALT-C directories · z projects</text>
+    <rect x="49" y="590" width="942" height="37" rx="0" fill="#160E22"/>
+    <rect x="49" y="590" width="89" height="37" fill="#B56CFF"/>
+    <text x="64" y="614" fill="#0D0914" font-weight="bold">◆ dev</text>
+    <text x="157" y="614" fill="#E06CDB">1:code</text><text x="242" y="614" fill="#9080A5">2:build</text>
+    <text x="916" y="614" fill="#B56CFF">23:41</text>
+  </g>
+  <g transform="translate(48 650)">
+    <circle r="4" cx="4" fill="#B56CFF"/><circle r="4" cx="22" fill="#E06CDB"/><circle r="4" cx="40" fill="#62D6E8"/>
+    <text x="60" y="4" fill="#9080A5" font-family="monospace" font-size="10">#0D0914 / #B56CFF / #E06CDB / #62D6E8</text>
+  </g>
+  <text x="992" y="654" text-anchor="end" fill="#67418C" font-family="monospace" font-size="10">ILLUSTRATIVE PREVIEW</text>
+</svg>

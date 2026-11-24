@@ -1,0 +1,34 @@
+{
+  "scheme": {
+    "name": "Violet Afterdark",
+    "background": "#0D0914",
+    "foreground": "#DDD5E8",
+    "cursorColor": "#B56CFF",
+    "selectionBackground": "#43265D",
+    "black": "#211332",
+    "red": "#E66B8D",
+    "green": "#7BD9AD",
+    "yellow": "#D6B477",
+    "blue": "#9E7BFF",
+    "purple": "#B56CFF",
+    "cyan": "#62D6E8",
+    "white": "#B7AAC8",
+    "brightBlack": "#766286",
+    "brightRed": "#FF8FAF",
+    "brightGreen": "#A1F1C6",
+    "brightYellow": "#F1D29D",
+    "brightBlue": "#BEA6FF",
+    "brightPurple": "#E06CDB",
+    "brightCyan": "#9AEAF3",
+    "brightWhite": "#F2EBFA"
+  },
+  "profile": {
+    "colorScheme": "Violet Afterdark",
+    "font": { "face": "0xProto Nerd Font Mono", "size": 11 },
+    "padding": "14, 12, 14, 12",
+    "opacity": 90,
+    "useAcrylic": true,
+    "cursorShape": "bar",
+    "tabColor": "#211332"
+  }
+}

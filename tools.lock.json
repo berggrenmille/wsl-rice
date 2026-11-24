@@ -1,0 +1,37 @@
+{
+  "fzf": {
+    "version": "0.75.0",
+    "url": "https://github.com/junegunn/fzf/releases/download/v0.75.0/fzf-0.75.0-linux_amd64.tar.gz",
+    "sha256": "0d6640f83582d991cf429754baad64b07e3a4e439a6019670f4b91da1314141c"
+  },
+  "zoxide": {
+    "version": "0.10.0",
+    "url": "https://github.com/ajeetdsouza/zoxide/releases/download/v0.10.0/zoxide-0.10.0-x86_64-unknown-linux-musl.tar.gz",
+    "sha256": "2d93385b99f3e82cf2701609a1bffcad863fbeb75aa3fe7eb6be4d29be68b1ae"
+  },
+  "bat": {
+    "version": "0.26.1",
+    "url": "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-unknown-linux-musl.tar.gz",
+    "sha256": "0dcd8ac79732c0d5b136f11f4ee00e581440e16a44eab5b3105b611bbf2cf191"
+  },
+  "starship": {
+    "version": "1.27.0",
+    "url": "https://github.com/starship/starship/releases/download/v1.27.0/starship-x86_64-unknown-linux-musl.tar.gz",
+    "sha256": "10c8eb4cb3b761d9bf59ea828444c2dab36c900b7d69a69e08814b286969df89"
+  },
+  "fastfetch": {
+    "version": "2.71.0",
+    "url": "https://github.com/fastfetch-cli/fastfetch/releases/download/2.71.0/fastfetch-linux-amd64.tar.gz",
+    "sha256": "abf5c99a3702cce8d3c7fa2cccd3ac205076ae0f2e45bced24a42a68821702d6"
+  },
+  "eza": {
+    "version": "0.23.5",
+    "url": "https://github.com/eza-community/eza/releases/download/v0.23.5/eza_x86_64-unknown-linux-gnu.tar.gz",
+    "sha256": "35c70c5c43c29108075e58b893234c67ef585f0b53a7eaf8e9e7d4eec9f339b4"
+  },
+  "gh": {
+    "version": "2.105.0",
+    "url": "https://github.com/cli/cli/releases/download/v2.105.0/gh_2.105.0_linux_amd64.tar.gz",
+    "sha256": "79e7ab5db738c48777b696e374f8b428f0647debfb424f44d2f426370407fe2f"
+  }
+}

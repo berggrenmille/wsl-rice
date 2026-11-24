@@ -1,0 +1,23 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "data",
+    "source": "\u001b[38;2;103;65;140m    ╱╲\n   ╱  ╲\n\u001b[38;2;181;108;255m  ╱ ╱╲ ╲\n ╱ ╱  ╲ ╲\n\u001b[38;2;224;108;219m ╲ ╲  ╱ ╱\n  ╲ ╲╱ ╱\n\u001b[38;2;98;214;232m   ╲  ╱\n    ╲╱\u001b[0m",
+    "padding": { "top": 1, "left": 2, "right": 4 }
+  },
+  "display": {
+    "separator": "  ",
+    "color": { "keys": "38;2;181;108;255", "title": "38;2;224;108;219" }
+  },
+  "modules": [
+    "break",
+    { "type": "custom", "format": "\u001b[1;38;2;181;108;255mV I O L E T   A F T E R D A R K\u001b[0m" },
+    { "type": "custom", "format": "\u001b[38;2;103;65;140m─────────────────────────────\u001b[0m" },
+    { "type": "os", "key": "system", "format": "{pretty-name}" },
+    { "type": "kernel", "key": "kernel" },
+    { "type": "shell", "key": "shell" },
+    { "type": "uptime", "key": "uptime" },
+    { "type": "memory", "key": "memory" },
+    "break"
+  ]
+}

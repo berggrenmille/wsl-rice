@@ -1,0 +1,118 @@
+# Violet Afterdark
+
+A dark, purple cyberpunk terminal for Ubuntu on WSL2. Bash stays Bash; Starship,
+Windows Terminal, fastfetch, fzf, eza, bat, and tmux share one palette.
+
+![Violet Afterdark terminal preview](assets/preview.svg)
+
+## Install
+
+Prerequisites: Ubuntu on WSL2, Python 3.11+, Git, and Windows Terminal.
+Pinned tool downloads target Linux x86_64. Existing binaries are retained.
+
+```bash
+git clone https://github.com/berggrenmille/wsl-rice.git
+cd wsl-rice
+python3 scripts/install-tools.py
+export PATH="$HOME/.local/bin:$PATH"
+python3 scripts/install.py preview --windows
+python3 scripts/install.py apply --windows
+```
+
+Open a fresh Ubuntu tab. Use **0xProto Nerd Font Mono**, size 11. Install
+[0xProto from Nerd Fonts](https://www.nerdfonts.com/font-downloads) on Windows
+first if it is not already installed. Linux font installation does not install
+the font for Windows Terminal. The font is not bundled in this repo.
+
+`--windows` finds the stable Windows Terminal settings and merges the visible
+profile whose name matches `$WSL_DISTRO_NAME`. Other profiles and the default
+profile are preserved. JSONC comments are removed when the settings file is
+serialized; the original bytes are backed up. To select an alternate installation
+or profile, use `--windows-settings /mnt/c/.../settings.json --profile-guid '{...}'`.
+Omit `--windows` for Linux configuration only.
+
+Optional tmux requires `sudo apt install tmux` if it is not already installed.
+Run `tmux` when you want sessions and panes; it is never launched automatically.
+The GitHub CLI is optional: `python3 scripts/install-tools.py --with-gh`.
+
+## Daily use
+
+| Action | Key or command |
+|---|---|
+| Search shell history | `Ctrl-r` |
+| Find a file and insert its path | `Ctrl-t` |
+| Toggle file preview in that picker | `Ctrl-/` |
+| Find a subdirectory | `Alt-c` |
+| Jump to a frequently used project | `z project-name` |
+| Choose among remembered directories | `zi` |
+| Detailed file listing | `ll` |
+| Two-level directory tree | `lt` |
+| Syntax-highlighted file preview | `bat file.cpp` |
+| Show the greeting again | `fastfetch` |
+| Start or reattach a named tmux session | `tmux new -As dev` |
+| tmux split side by side / stacked | `Ctrl-b`, then `|` / `-` |
+| tmux new window / next window / detach | `Ctrl-b`, then `c` / `n` / `d` |
+| Reload tmux theme | `Ctrl-b`, then `r` |
+
+The prompt shows directory, branch, changes, and development context. Native
+Starship modules detect CMake, .NET, Node, Python, and Rust; C++ gets a lightweight
+label. Context is based on the current directory's markers, rather than a
+recursive repository scan. Commands over one second show their duration; failures
+show their exit code. Everything is on the left, compatible with regular Bash.
+
+NVM loads on the first `nvm`, `node`, `npm`, `npx`, `corepack`, `yarn`, or `pnpm`
+command. Subsequent commands use the real binaries/functions. If a workflow needs
+NVM initialized immediately, add `. "$NVM_DIR/nvm.sh"` to your local overrides.
+Existing `.profile`, `.bash_aliases`, Rust setup, and the guarded `/opt/gcc-15.2`
+toolchain integration are preserved. No toolchain is installed by this repo.
+
+## Customize
+
+Edit the files in `config/` and `windows/terminal.json`, preview, then apply again.
+Files are copied, so the repo can be moved or removed without breaking the shell.
+Put machine-specific overrides in `~/.config/bash/local.bash` or
+`~/.bash_aliases`; these files are not managed or committed. To disable the
+greeting, export `VIOLET_GREETING=0` before starting Bash.
+
+| Role | Color |
+|---|---|
+| Background | `#0D0914` |
+| Surface | `#211332` |
+| Violet | `#B56CFF` |
+| Orchid | `#E06CDB` |
+| Cyan | `#62D6E8` |
+| Foreground | `#DDD5E8` |
+
+## Backups and restore
+
+Each changed installation stores original files and a manifest under
+`~/.local/state/wsl-rice/backups/`. Backups are outside this repo. Identical
+reinstalls leave files and the latest backup pointer unchanged.
+
+```bash
+python3 scripts/install.py restore
+# Or select a particular installation's manifest:
+python3 scripts/install.py restore --backup ~/.local/state/wsl-rice/backups/TIMESTAMP/manifest.json
+```
+
+Restore recovers original bytes, permissions, and symlinks, and removes files
+created by that installation. It checks all files first and refuses to overwrite
+edits made after installation. For several successive theme updates, restore
+their manifests in reverse order to return to the initial setup. Open a fresh
+tab afterward. Downloaded binaries remain in `~/.local/bin`; tool installation
+is separate from config rollback.
+
+## Validation
+
+```bash
+python3 -m unittest discover -s tests -v
+bash -n config/bashrc config/shell.bash
+STARSHIP_CONFIG="$PWD/config/starship.toml" starship prompt
+fastfetch --config "$PWD/config/fastfetch.jsonc"
+```
+
+The installer tests exercise repeat installation, exact rollback, symlink
+restoration, conflict handling, and preserving unrelated Windows Terminal settings.
+`tools.lock.json` records upstream download URLs and SHA-256 digests. No downloaded
+binaries, credentials, cloud configs, shell history, or personal backups belong
+in this repository. The preview is an illustrative SVG, not a desktop screenshot.

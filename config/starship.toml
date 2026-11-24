@@ -1,0 +1,99 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = true
+command_timeout = 500
+scan_timeout = 30
+palette = 'violet'
+format = '[╭─](muted)$directory$git_branch$git_status$cmake${custom.cpp}$dotnet$nodejs$python$rust$cmd_duration$status$line_break[╰─](muted)$character'
+
+[palettes.violet]
+purple = '#B56CFF'
+orchid = '#E06CDB'
+cyan = '#62D6E8'
+muted = '#67418C'
+subtle = '#9080A5'
+text = '#DDD5E8'
+green = '#7BD9AD'
+red = '#F2779A'
+
+[directory]
+style = 'bold purple'
+format = '[ $path]($style)[$read_only]($read_only_style) '
+read_only = ' '
+read_only_style = 'orchid'
+truncation_length = 3
+truncation_symbol = '…/'
+
+[git_branch]
+symbol = ' '
+style = 'orchid'
+format = '[$symbol$branch]($style) '
+
+[git_status]
+style = 'subtle'
+format = '([$all_status$ahead_behind]($style) )'
+conflicted = '≠${count} '
+ahead = '↑${count} '
+behind = '↓${count} '
+diverged = '↕${ahead_count}/${behind_count} '
+untracked = '?${count} '
+stashed = '◆${count} '
+modified = '~${count} '
+staged = '+${count} '
+renamed = '»${count} '
+deleted = '-${count} '
+
+[cmake]
+symbol = 'cmake '
+style = 'subtle'
+format = '[· $symbol$version]($style) '
+version_format = '${major}.${minor}'
+
+[custom.cpp]
+description = 'C++ context without spawning compilers or recursively walking the repository'
+detect_extensions = ['cpp', 'cc', 'cxx', 'hpp', 'hxx', 'ixx']
+detect_files = ['CMakeLists.txt']
+symbol = 'C++'
+format = '[· $symbol](subtle) '
+
+[dotnet]
+symbol = '.NET '
+style = 'subtle'
+format = '[· $symbol$version]($style) '
+version_format = '${major}.${minor}'
+detect_extensions = ['sln', 'slnx', 'csproj', 'fsproj', 'vbproj']
+detect_files = ['global.json', 'Directory.Build.props']
+heuristic = false
+
+[nodejs]
+symbol = 'node '
+style = 'subtle'
+format = '[· $symbol$version]($style) '
+version_format = '${major}.${minor}'
+
+[python]
+symbol = 'py '
+style = 'subtle'
+format = '[· $symbol$version( $virtualenv)]($style) '
+version_format = '${major}.${minor}'
+
+[rust]
+symbol = 'rs '
+style = 'subtle'
+format = '[· $symbol$version]($style) '
+version_format = '${major}.${minor}'
+
+[cmd_duration]
+min_time = 1000
+style = 'cyan'
+format = '[· $duration]($style) '
+
+[status]
+disabled = false
+symbol = '× '
+style = 'red'
+format = '[$symbol$status]($style) '
+
+[character]
+success_symbol = '[❯](bold purple)'
+error_symbol = '[❯](bold red)'
+vicmd_symbol = '[❮](bold cyan)'

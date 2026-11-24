@@ -1,0 +1,7 @@
+# Violet Afterdark — interactive Bash entry point.
+case $- in *i*) ;; *) return ;; esac
+if [ -r "$HOME/.config/wsl-rice/shell.bash" ]; then
+    . "$HOME/.config/wsl-rice/shell.bash"
+else
+    PS1='\u@\h:\w\$ '
+fi
