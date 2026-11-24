@@ -1,7 +1,7 @@
 # Violet Afterdark
 
 A dark, purple cyberpunk terminal for Ubuntu on WSL2. Bash stays Bash; Starship,
-Windows Terminal, fastfetch, fzf, eza, bat, and tmux share one palette.
+Windows Terminal, fastfetch, fzf, eza, bat, tmux, and VS Code share one palette.
 
 ![Violet Afterdark terminal preview](assets/preview.svg)
 
@@ -49,7 +49,7 @@ The GitHub CLI is optional: `python3 scripts/install-tools.py --with-gh`.
 | Two-level directory tree | `lt` |
 | Syntax-highlighted file preview | `bat file.cpp` |
 | Show the greeting again | `fastfetch` |
-| Start or reattach a named tmux session | `tmux new -As dev` |
+| Start or reattach the dev tmux session | `t` (or `tmux new -As dev`) |
 | tmux shortcut menu | `Ctrl-b`, then `F1` |
 | tmux split side by side (vertical divider) | `Ctrl-b`, then `v` |
 | tmux split top/bottom (horizontal divider) | `Ctrl-b`, then `h` |
@@ -68,6 +68,12 @@ If you get lost, `Ctrl-b`, then `w` opens the overview: use arrows and Enter to
 pick a window or pane, or Escape to cancel. `Ctrl-b`, then `z` enlarges the active
 pane without closing any others; repeat to restore the layout.
 
+While inside tmux, just continue working. After detaching or reopening the
+terminal, `t` reconnects to the existing `dev` session, creating it only when
+needed. Running `t` inside tmux prints a reminder instead of nesting a session.
+Sessions survive terminal disconnection while the WSL instance stays running;
+they do not survive a Windows reboot or `wsl --shutdown`.
+
 The prompt shows directory, branch, changes, and development context. Native
 Starship modules detect CMake, .NET, Node, Python, and Rust; C++ gets a lightweight
 label. Context is based on the current directory's markers, rather than a
@@ -83,6 +89,45 @@ If a workflow needs
 NVM initialized immediately, add `. "$NVM_DIR/nvm.sh"` to your local overrides.
 Existing `.profile`, `.bash_aliases`, Rust setup, and the guarded `/opt/gcc-15.2`
 toolchain integration are preserved. No toolchain is installed by this repo.
+
+## VS Code extension
+
+The theme-only extension source lives in `vscode/violet-afterdark/`. The ready-to-install
+package is [dist/violet-afterdark-0.1.0.vsix](dist/violet-afterdark-0.1.0.vsix).
+In Windows VS Code, run **Extensions: Install from VSIX…** in the Command Palette,
+select the package, then choose **Violet Afterdark** using **Preferences: Color Theme**.
+For a WSL workspace, install the theme on the Windows side (its extension kind is UI).
+It changes colors only; your extensions, fonts, shortcuts, and terminal profile remain your choice.
+
+To select the installed theme from WSL with a backup of your VS Code settings:
+
+```bash
+python3 scripts/vscode.py preview --terminal-font '0xProto Nerd Font Mono'
+python3 scripts/vscode.py apply --terminal-font '0xProto Nerd Font Mono'
+```
+
+The optional font argument matches the WSL terminal font. Omit it to keep the
+current terminal font. Your editor font and icon theme are preserved. The script
+targets stable Windows VS Code's default user settings. Use `--settings PATH`
+for Insiders or a named VS Code profile. It parses JSONC and backs up the original
+bytes before serializing JSON; comments are retained in the backup.
+
+`python3 scripts/vscode.py restore` restores that settings backup separately from
+the shell backups. Alternatively, simply choose your previous theme in the picker.
+The VSIX remains installed until removed through Extensions.
+
+Build a new package with Node.js 22+:
+
+```bash
+cd vscode/violet-afterdark
+npm ci --ignore-scripts
+npm run package
+```
+
+The pinned packager is a development dependency; the VSIX contains only theme
+data and documentation. It is stored in the private repo, not published to the Marketplace.
+Official references: [color themes](https://code.visualstudio.com/api/extension-guides/color-theme)
+and [VSIX packaging](https://code.visualstudio.com/api/working-with-extensions/publishing-extension).
 
 ## Customize
 
@@ -132,5 +177,5 @@ fastfetch --config "$PWD/config/fastfetch.jsonc"
 The installer tests exercise repeat installation, exact rollback, symlink
 restoration, conflict handling, and preserving unrelated Windows Terminal settings.
 `tools.lock.json` records upstream download URLs and SHA-256 digests. No downloaded
-binaries, credentials, cloud configs, shell history, or personal backups belong
+tool binaries, credentials, cloud configs, shell history, or personal backups belong
 in this repository. The preview is an illustrative SVG, not a desktop screenshot.

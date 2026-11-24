@@ -44,3 +44,21 @@ that cost.
 The SVG in `assets/preview.svg` illustrates the palette and intended composition.
 Actual Windows Terminal font rendering, acrylic, and desktop compositing need a
 fresh Ubuntu tab on Windows to judge; the SVG is not evidence of a captured desktop.
+
+## VS Code extension and tmux shorthand
+
+- Built Violet Afterdark 0.1.0 with the pinned official `@vscode/vsce` 4.1.1
+  packager on Node 24.20.0. The VSIX contains seven files: theme data, extension
+  metadata, and documentation. No runtime code or dependencies are included.
+- All 170 workbench color identifiers were checked against Microsoft's theme
+  color reference; all color values passed hexadecimal format validation.
+- Windows VS Code 1.147.0 successfully installed the VSIX. The installed theme
+  file exactly matches the repository source.
+- Activation changed only `workbench.colorTheme` and
+  `terminal.integrated.fontFamily`. Editor font, icons, and other settings were
+  preserved. The prior settings file is backed up outside the repository.
+- A temporary-settings smoke check verified repeat application, unrelated
+  settings preservation, and byte-exact restoration of the original JSONC.
+- Bash syntax validation and the `t` shortcut's already-inside-tmux guard passed.
+- VS Code desktop rendering has not been visually inspected; the theme was
+  validated through the official packager, installation, and configuration checks.

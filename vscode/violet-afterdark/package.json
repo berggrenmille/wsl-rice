@@ -1,0 +1,32 @@
+{
+  "name": "violet-afterdark",
+  "displayName": "Violet Afterdark",
+  "description": "A dark purple cyberpunk theme with violet, orchid, and cyan accents. Matches the Violet Afterdark WSL setup.",
+  "version": "0.1.0",
+  "publisher": "berggrenmille",
+  "license": "UNLICENSED",
+  "engines": { "vscode": "^1.90.0" },
+  "categories": ["Themes"],
+  "keywords": ["dark", "purple", "violet", "cyberpunk", "wsl"],
+  "extensionKind": ["ui"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/berggrenmille/wsl-rice.git",
+    "directory": "vscode/violet-afterdark"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Violet Afterdark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/violet-afterdark-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "vsce package --no-dependencies --out ../../dist/violet-afterdark-0.1.0.vsix"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "4.1.1"
+  }
+}

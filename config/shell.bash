@@ -43,6 +43,15 @@ fi
 alias l='ls'
 alias ..='cd ..'
 alias ...='cd ../..'
+if command -v tmux >/dev/null 2>&1; then
+    t() {
+        if [ -n "${TMUX:-}" ]; then
+            printf 'Already inside tmux. Ctrl-b, then w shows your windows; d detaches.\n'
+        else
+            tmux new-session -A -s dev
+        fi
+    }
+fi
 # Preserve the existing Ubuntu long-command notification shortcut.
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history | tail -n1 | sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 if ! command -v bat >/dev/null 2>&1 && command -v batcat >/dev/null 2>&1; then
