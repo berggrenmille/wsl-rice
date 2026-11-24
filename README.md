@@ -50,9 +50,23 @@ The GitHub CLI is optional: `python3 scripts/install-tools.py --with-gh`.
 | Syntax-highlighted file preview | `bat file.cpp` |
 | Show the greeting again | `fastfetch` |
 | Start or reattach a named tmux session | `tmux new -As dev` |
-| tmux split side by side / stacked | `Ctrl-b`, then `|` / `-` |
+| tmux shortcut menu | `Ctrl-b`, then `F1` |
+| tmux split side by side (vertical divider) | `Ctrl-b`, then `v` |
+| tmux split top/bottom (horizontal divider) | `Ctrl-b`, then `h` |
+| Move between tmux panes | `Ctrl-b`, then an arrow key, or click a pane |
+| Toggle current pane full-screen | `Ctrl-b`, then `z` |
+| Overview of sessions, windows, and panes | `Ctrl-b`, then `w` |
+| Cycle pane arrangement | `Ctrl-b`, then `Space` |
 | tmux new window / next window / detach | `Ctrl-b`, then `c` / `n` / `d` |
 | Reload tmux theme | `Ctrl-b`, then `r` |
+
+For every tmux shortcut, press **Ctrl-b**, release both keys, then press the
+second key. The `v` and `h` shortcuts work without AltGr on a Swedish layout.
+The original `|` and `-` split shortcuts also work. In the F1 menu, press the
+letter shown next to an action, or use the mouse; Escape dismisses it.
+If you get lost, `Ctrl-b`, then `w` opens the overview: use arrows and Enter to
+pick a window or pane, or Escape to cancel. `Ctrl-b`, then `z` enlarges the active
+pane without closing any others; repeat to restore the layout.
 
 The prompt shows directory, branch, changes, and development context. Native
 Starship modules detect CMake, .NET, Node, Python, and Rust; C++ gets a lightweight
