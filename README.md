@@ -5,6 +5,9 @@ Windows Terminal, fastfetch, fzf, eza, bat, tmux, and VS Code share one palette.
 
 ![Violet Afterdark terminal preview](assets/preview.svg)
 
+For the Mac mini, see the [macOS setup](macos/README.md). It shares the prompt,
+palette, tmux theme, and VS Code package, with a separate Zsh setup and Brewfile.
+
 ## Install
 
 Prerequisites: Ubuntu on WSL2, Python 3.11+, Git, and Windows Terminal.

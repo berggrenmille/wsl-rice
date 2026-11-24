@@ -1,0 +1,5 @@
+brew "starship"
+brew "fzf"
+brew "zoxide"
+brew "eza"
+brew "bat"
