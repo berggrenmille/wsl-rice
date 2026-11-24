@@ -69,6 +69,44 @@ command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash)"
 
 # Defer NVM's startup cost until first use. Loading NVM restores its real functions.
 export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+_violet_nvm_path() {
+    # Nested shells retain an explicitly selected version. Fresh shells resolve
+    # the default so npm-installed executables (including Codex) work immediately.
+    case ":$PATH:" in *":$NVM_DIR/versions/node/"*"/bin:"*) return ;; esac
+    local version=default depth candidate
+    local -a candidates
+    for ((depth=0; depth<16; depth++)); do
+        [ -r "$NVM_DIR/alias/$version" ] || break
+        read -r version < "$NVM_DIR/alias/$version" || :
+    done
+    case "$version" in
+        system) return ;;
+        node|stable) version='v' ;;
+        *)
+            if [[ "$version" =~ ^v?[0-9]+(\.[0-9]+){0,2}$ ]]; then
+                version="v${version#v}"
+            else
+                # Delegate unusual or unresolved aliases to NVM itself.
+                . "$NVM_DIR/nvm.sh"
+                return
+            fi ;;
+    esac
+    if [ "$version" = v ]; then
+        candidates=("$NVM_DIR/versions/node/"v[0-9]*)
+    else
+        candidates=("$NVM_DIR/versions/node/$version" "$NVM_DIR/versions/node/$version".*)
+    fi
+    while IFS= read -r candidate; do
+        if [ -x "$candidate/bin/node" ]; then
+            export PATH="$candidate/bin:$PATH"
+            return
+        fi
+    done < <(printf '%s\n' "${candidates[@]}" | sort -Vr)
+    # A missing default version must retain NVM's normal diagnostics/behavior.
+    . "$NVM_DIR/nvm.sh"
+}
+if [ -s "$NVM_DIR/nvm.sh" ]; then _violet_nvm_path; fi
+unset -f _violet_nvm_path
 if [ -s "$NVM_DIR/nvm.sh" ] && ! declare -F nvm >/dev/null; then
     _violet_load_nvm() {
         unset -f nvm node npm npx corepack yarn pnpm

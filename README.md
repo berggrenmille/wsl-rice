@@ -60,8 +60,12 @@ label. Context is based on the current directory's markers, rather than a
 recursive repository scan. Commands over one second show their duration; failures
 show their exit code. Everything is on the left, compatible with regular Bash.
 
-NVM loads on the first `nvm`, `node`, `npm`, `npx`, `corepack`, `yarn`, or `pnpm`
-command. Subsequent commands use the real binaries/functions. If a workflow needs
+The default NVM Node version is put on PATH immediately, so globally installed
+commands such as Codex work in a fresh tab. NVM itself loads on the first `nvm`,
+`node`, `npm`, `npx`, `corepack`, `yarn`, or `pnpm` command. Subsequent commands use
+the real binaries/functions. Nested shells keep an already-selected version;
+unusual unresolved aliases fall back to normal eager NVM initialization.
+If a workflow needs
 NVM initialized immediately, add `. "$NVM_DIR/nvm.sh"` to your local overrides.
 Existing `.profile`, `.bash_aliases`, Rust setup, and the guarded `/opt/gcc-15.2`
 toolchain integration are preserved. No toolchain is installed by this repo.
